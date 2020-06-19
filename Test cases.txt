@@ -1,0 +1,466 @@
+Test case 1:
+
+-Return date is before departure date.
+
+- Endpoint: https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/SJJ-sky/VIE-sky/2020-09-01?inboundpartialdate=2020-8-01
+
+- Input parameters:
+*Country: US
+*Currency: USD
+*Language: en-US
+*Departure location: FRA-sky (Frankfurt am Main)
+*Destination location: Muc-sky (Munich)
+*Departure date: 2020-09-01
+*Return date: 2020-08-01
+
+- Output:
+{
+    "Quotes": [
+        {
+            "QuoteId": 1,
+            "MinPrice": 153.0,
+            "Direct": true,
+            "OutboundLeg": {
+                "CarrierIds": [
+                    1368
+                ],
+                "OriginId": 52337,
+                "DestinationId": 68611,
+                "DepartureDate": "2020-09-01T00:00:00"
+            },
+            "QuoteDateTime": "2020-06-12T15:09:00"
+        },
+        {
+            "QuoteId": 2,
+            "MinPrice": 93.0,
+            "Direct": false,
+            "OutboundLeg": {
+                "CarrierIds": [
+                    1816
+                ],
+                "OriginId": 52337,
+                "DestinationId": 68611,
+                "DepartureDate": "2020-09-01T00:00:00"
+            },
+            "QuoteDateTime": "2020-06-12T15:09:00"
+        }
+    ],
+    "Places": [
+        {
+            "PlaceId": 52337,
+            "IataCode": "FRA",
+            "Name": "Frankfurt am Main",
+            "Type": "Station",
+            "SkyscannerCode": "FRA",
+            "CityName": "Frankfurt",
+            "CityId": "FRAN",
+            "CountryName": "Germany"
+        },
+        {
+            "PlaceId": 68611,
+            "IataCode": "MUC",
+            "Name": "Munich",
+            "Type": "Station",
+            "SkyscannerCode": "MUC",
+            "CityName": "Munich",
+            "CityId": "MUNI",
+            "CountryName": "Germany"
+        }
+    ],
+    "Carriers": [
+        {
+            "CarrierId": 1033,
+            "Name": "Aer Lingus"
+        },
+        {
+            "CarrierId": 1090,
+            "Name": "Ryanair"
+        },
+        {
+            "CarrierId": 1368,
+            "Name": "Lufthansa"
+        },
+        {
+            "CarrierId": 1816,
+            "Name": "Air Europa"
+        }
+    ],
+    "Currencies": [
+        {
+            "Code": "USD",
+            "Symbol": "$",
+            "ThousandsSeparator": ",",
+            "DecimalSeparator": ".",
+            "SymbolOnLeft": true,
+            "SpaceBetweenAmountAndSymbol": false,
+            "RoundingCoefficient": 0,
+            "DecimalDigits": 2
+        }
+    ]
+}
+
+
+Test case 2:
+
+- Return date is before departure date variation.
+
+- Endpoint: https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/FRA-sky/MUC-sky/2020-09-02/2020-09-01
+
+- Input parameters:
+*Country: US
+*Currency: USD
+*Language: en-US
+*Departure location: FRA-sky (Frankfurt am Main)
+*Destination location: MUC-sky (Munich)
+*Departure date: 2020-09-02
+*Return date: 2020-08-01
+
+- Output:
+
+{
+    "ValidationErrors": [
+        {
+            "ParameterName": "OutboundDate & InboundDate",
+            "ParameterValue": "2020-09-02 & 2020-09-01",
+            "Message": "InboundDate must be later than OutboundDate"
+        }
+    ]
+}
+
+
+Test case 3: 
+
+- Departure location the same as destination location.
+
+Endpoint: https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/MUC-sky/MUC-sky/2020-09-02/2020-09-08
+
+- Input parameters:
+*Country: US
+*Currency: USD
+*Language: en-US
+*Departure location: MUC-sky (Munich)
+*Destination location: MUC-sky (Munich)
+*Departure date: 2020-09-02
+*Return date: 2020-09-08
+
+- Output:
+
+{
+    "Quotes": [],
+    "Places": [],
+    "Carriers": [],
+    "Currencies": [
+        {
+            "Code": "USD",
+            "Symbol": "$",
+            "ThousandsSeparator": ",",
+            "DecimalSeparator": ".",
+            "SymbolOnLeft": true,
+            "SpaceBetweenAmountAndSymbol": false,
+            "RoundingCoefficient": 0,
+            "DecimalDigits": 2
+        }
+    ]
+}
+
+
+Test case 4: 
+
+- User happy path.
+
+*Country: US
+*Currency: USD
+*Language: en-US
+*Departure location: FRA-sky (Frankfurt am Main)
+*Destination location: MUC-sky (Munich)
+*Departure date: 2020-07-02
+*Return date: 2020-08-08
+
+{
+    "Quotes": [
+        {
+            "QuoteId": 1,
+            "MinPrice": 170.0,
+            "Direct": false,
+            "OutboundLeg": {
+                "CarrierIds": [
+                    1090
+                ],
+                "OriginId": 52337,
+                "DestinationId": 68611,
+                "DepartureDate": "2020-07-02T00:00:00"
+            },
+            "QuoteDateTime": "2020-06-16T09:08:00"
+        },
+        {
+            "QuoteId": 2,
+            "MinPrice": 259.0,
+            "Direct": true,
+            "OutboundLeg": {
+                "CarrierIds": [
+                    1368
+                ],
+                "OriginId": 52337,
+                "DestinationId": 68611,
+                "DepartureDate": "2020-07-02T00:00:00"
+            },
+            "QuoteDateTime": "2020-06-16T09:08:00"
+        }
+    ],
+    "Places": [
+        {
+            "PlaceId": 52337,
+            "IataCode": "FRA",
+            "Name": "Frankfurt am Main",
+            "Type": "Station",
+            "SkyscannerCode": "FRA",
+            "CityName": "Frankfurt",
+            "CityId": "FRAN",
+            "CountryName": "Germany"
+        },
+        {
+            "PlaceId": 68611,
+            "IataCode": "MUC",
+            "Name": "Munich",
+            "Type": "Station",
+            "SkyscannerCode": "MUC",
+            "CityName": "Munich",
+            "CityId": "MUNI",
+            "CountryName": "Germany"
+        }
+    ],
+    "Carriers": [
+        {
+            "CarrierId": 1090,
+            "Name": "Ryanair"
+        },
+        {
+            "CarrierId": 1368,
+            "Name": "Lufthansa"
+        },
+        {
+            "CarrierId": 1375,
+            "Name": "LOT"
+        },
+        {
+            "CarrierId": 1523,
+            "Name": "Austrian Airlines"
+        },
+        {
+            "CarrierId": 1816,
+            "Name": "Air Europa"
+        }
+    ],
+    "Currencies": [
+        {
+            "Code": "USD",
+            "Symbol": "$",
+            "ThousandsSeparator": ",",
+            "DecimalSeparator": ".",
+            "SymbolOnLeft": true,
+            "SpaceBetweenAmountAndSymbol": false,
+            "RoundingCoefficient": 0,
+            "DecimalDigits": 2
+        }
+    ]
+}
+
+
+Test case 5: 
+
+- Departure location as an integer.
+
+- Endpoint: https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/4/MUC-sky/2020-07-02
+
+- Input parameters:
+*Country: US
+*Currency: USD
+*Language: en-US
+*Departure location: 4 (Int)
+*Destination location: MUC-sky (Munich)
+*Departure date: 2020-07-02.
+
+-Output: 
+{
+    "ValidationErrors": [
+        {
+            "ParameterName": "OriginPlace",
+            "ParameterValue": "4",
+            "Message": "Incorrect value"
+        }
+    ]
+}
+
+Test case 6:
+
+- Destination location as an integer.
+
+-Endpoint: https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/MUC-sky/1/2020-07-02
+
+-Input parameters:
+*Country: US
+*Currency: USD
+*Language: en-US
+*Departure location: MUC-sky (Munich)
+*Destination location: 1 (Int)
+*Departure date: 2020-07-02
+
+-Output: 
+{
+    "ValidationErrors": [
+        {
+            "ParameterName": "DestinationPlace",
+            "ParameterValue": "1",
+            "Message": "Incorrect value"
+        }
+    ]
+}
+
+Test case 7:
+
+- Departure date as an integer.
+
+-Endpoint: https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/MUC-sky/FRA-sky/1
+
+-Input parameters:
+*Country: US
+*Currency: USD
+*Language: en-US
+*Departure location: MUC-sky (Munich)
+*Destination location: FRA-sky (Frankfurt am Main)
+*Departure date: 1
+
+-Output: 
+{
+    "ValidationErrors": [
+        {
+            "ParameterName": "OutboundDate",
+            "ParameterValue": "1",
+            "Message": "Incorrect date format"
+        }
+    ]
+}
+
+- Test case 8: 
+
+- Language as an integer.
+
+-Endpoint: https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/1/MUC-sky/FRA-sky/2020-07-02
+
+-Input parameters:
+*Country: US
+*Currency: USD
+*Language: 1 (Int)
+*Departure location: MUC-sky (Munich)
+*Destination location: FRA-sky (Frankfurt am Main)
+*Departure date: 2020-07-02
+
+- Output: {}
+
+Test case 9:
+
+- Currency as an integer.
+
+- Endpoint: https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/1/en-US/MUC-sky/FRA-sky/2020-07-02
+
+-Input parameters:
+*Country: US
+*Currency: 1 (Int)
+*Language: en-US
+*Departure location: MUC-sky (Munich)
+*Destination location: FRA-sky (Frankfurt am Main)
+*Departure date: 2020-07-02
+
+-Output: 
+{
+    "ValidationErrors": [
+        {
+            "ParameterName": "Currency",
+            "ParameterValue": "1",
+            "Message": "Incorrect value"
+        }
+    ]
+}
+
+Test case 10:
+
+- Country as integer.
+
+-Endpoint: https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/-1/USD/en-US/MUC-sky/FRA-sky/2020-07-02
+
+-Input parameters:
+*Country: 1 (Int)
+*Currency: USD
+*Language: en-US
+*Departure location: MUC-sky (Munich)
+*Destination location: FRA-sky (Frankfurt am Main)
+*Departure date: 2020-07-02
+
+-Output: 
+{
+    "ValidationErrors": [
+        {
+            "ParameterName": "Country",
+            "ParameterValue": "",
+            "Message": "Incorrect value"
+        },
+        {
+            "ParameterName": "CountryId",
+            "ParameterValue": "",
+            "Message": "The country specific is not a valid market"
+        }
+    ]
+}
+
+Test case 11:
+
+- Different date format.
+
+- Endpoint: https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/MUC-sky/FRA-sky/2020-7-2
+
+-Input parameters:
+*Country: US
+*Currency: USD
+*Language: en-US
+*Departure location: MUC-sky (Munich)
+*Destination location: FRA-sky (Frankfurt am Main)
+*Departure date: 2020-7-2
+
+- Output: 
+{
+    "ValidationErrors": [
+        {
+            "ParameterName": "OutboundDate",
+            "ParameterValue": "2020-7-2",
+            "Message": "Incorrect date format"
+        }
+    ]
+}
+
+
+- Test case 12:
+- Endpoint: https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browseroutes/v1.0/US/USD/en-US/SFO-sky/ORD-sky/2000-09-01
+
+-Input parameters:
+*Country: US
+*Currency: USD
+*Language: en-US
+*Departure location: MUC-sky (Munich)
+*Destination location: FRA-sky (Frankfurt am Main)
+*Departure date: 2000-09-01
+
+- Output:
+{
+    "ValidationErrors": [
+        {
+            "ParameterName": "OutboundDate",
+            "ParameterValue": "2000-09-01",
+            "Message": "Date in the past"
+        },
+        {
+            "ParameterName": "OutboundDate",
+            "ParameterValue": "2000-09-01",
+            "Message": "Date too far in the future"
+        }
+    ]
+}
