@@ -1,4 +1,4 @@
-Test case 1:
+Test case 1 (negative test):
 
 -Return date is before departure date.
 
@@ -19,7 +19,7 @@ https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosu
 "CityId":"FRAN-sky"
 "CountryName":"Germany"
 
-- Endpoint: https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/SJJ-sky/VIE-sky/2020-09-01?inboundpartialdate=2020-8-01
+- Endpoint: https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/FRA-sky/MUC-sky/2020-09-01?inboundpartialdate=2020-08-01
 
 - Input parameters:
 *Country: US
@@ -117,7 +117,7 @@ https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosu
 }
 
 
-Test case 2:
+Test case 2 (negative test):
 
 - Return date is before departure date variation.
 
@@ -145,7 +145,7 @@ Test case 2:
 }
 
 
-Test case 3: 
+Test case 3 (negative test): 
 
 - Departure location the same as destination location.
 
@@ -181,7 +181,7 @@ Endpoint: https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservi
 }
 
 
-Test case 4: 
+Test case 4 (positive test): 
 
 - User happy path. (Smoke test)
 
@@ -283,7 +283,7 @@ Test case 4:
 }
 
 
-Test case 5: 
+Test case 5 (negative test): 
 
 - Departure location as an integer.
 
@@ -308,7 +308,7 @@ Test case 5:
     ]
 }
 
-Test case 6:
+Test case 6 (negative test):
 
 - Destination location as an integer.
 
@@ -333,7 +333,7 @@ Test case 6:
     ]
 }
 
-Test case 7:
+Test case 7 (negative test):
 
 - Departure date as an integer.
 
@@ -358,7 +358,7 @@ Test case 7:
     ]
 }
 
-- Test case 8: 
+- Test case 8 (negative test): 
 
 - Language as an integer.
 
@@ -374,7 +374,7 @@ Test case 7:
 
 - Output: {}
 
-Test case 9:
+Test case 9 (negative test):
 
 - Currency as an integer.
 
@@ -399,7 +399,7 @@ Test case 9:
     ]
 }
 
-Test case 10:
+Test case 10 (negative test):
 
 - Country as integer.
 
@@ -429,7 +429,7 @@ Test case 10:
     ]
 }
 
-Test case 11:
+Test case 11 (negative test):
 
 - Different date format.
 
@@ -455,7 +455,10 @@ Test case 11:
 }
 
 
-- Test case 12:
+- Test case 12 (negative test):
+
+- Routes for destination with departure date in the past.
+
 - Endpoint: https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browseroutes/v1.0/US/USD/en-US/SFO-sky/ORD-sky/2000-09-01
 
 -Input parameters:
