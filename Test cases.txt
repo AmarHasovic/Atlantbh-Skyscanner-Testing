@@ -2,6 +2,23 @@ Test case 1:
 
 -Return date is before departure date.
 
+- Places endpoints: 
+https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/UK/USD/en-GB/?query=Munich
+"PlaceId":"MUC-sky"
+"PlaceName":"Munich"
+"CountryId":"DE-sky"
+"RegionId":""
+"CityId":"MUNI-sky"
+"CountryName":"Germany"
+
+https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/UK/USD/en-GB/?query=Frankfurt
+"PlaceId":"FRA-sky"
+"PlaceName":"Frankfurt am Main"
+"CountryId":"DE-sky"
+"RegionId":""
+"CityId":"FRAN-sky"
+"CountryName":"Germany"
+
 - Endpoint: https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/SJJ-sky/VIE-sky/2020-09-01?inboundpartialdate=2020-8-01
 
 - Input parameters:
