@@ -166,7 +166,7 @@ Endpoint: https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservi
 
 Test case 4: 
 
-- User happy path.
+- User happy path. (Smoke test)
 
 *Country: US
 *Currency: USD
